@@ -86,6 +86,8 @@ npm run dev  # http://localhost:3000
 
 ## 示例提示词与报告
 
+提示词：针对 GraphRAG 主题，找到2025年的全部最新学术论文、开源项目，深入读取论文内容，整理出完整综述。搜索关键词使用英文，但是最终的报告为中文。
+
 实验过程中生成的报告保存在 `reports/`：
 
 1. `gemini_deepresearch.docx` – Gemini 2.5 Pro 运行（2025-11-17）
